@@ -1,0 +1,8 @@
+CustomerID,FullName,OrderID,Totalcost,MenuName,CourseName,StarterName
+11,"Margarita Mancktelow",11,168.27,Menu5,Kabasa,Falafel
+9,"Mart Malsher",9,190.00,Menu3,Pizza,Minestrone
+6,"Angel Veschambre",6,210.00,Menu6,Shwarma,Hummus
+4,"Merrill Baudon",4,220.00,Menu4,Carbonara,"Tomato bread"
+8,"Audie Willcocks",8,225.00,Menu2,"Bean soup",Flatbread
+2,"Giacopo Bramich",2,235.00,Menu2,"Bean soup",Flatbread
+7,"Sheilah Maestro",7,310.00,Menu1,"Greek salad",Olives

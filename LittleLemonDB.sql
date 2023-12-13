@@ -67,6 +67,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,'Laney Fadden',218178086,'laneyfadden@gmail.com'),(2,'Giacopo Bramich',440389486,'giacopobramich@gmail.com'),(3,'Lia Bonar',776784094,'liabonar@gmail.com'),(4,'Merrill Baudon',829615667,'merrillbaudon@gmail.com'),(5,'Tasia Fautly',131184214,'tasiafautly@gmail.com'),(6,'Angel Veschambre',964758263,'angelveschambre@gmail.com'),(7,'Sheilah Maestro',393867552,'sheilahmaestro@gmail.com'),(8,'Audie Willcocks',618110130,'audiewillcocks@gmail.com'),(9,'Mart Malsher',885536108,'martmalsher@gmail.com'),(10,'Magdalen Lacheze',379987561,'magdalenlacheze@gmail.com'),(11,'Margarita Mancktelow',747096307,'margaritamancktelow@gmail.com'),(12,'Ashil Brogini',894472790,'ashilbrogini@gmail.com'),(13,'Arthur Mathewson',577570334,'arthurmathewson@gmail.com'),(14,'Ennis Dungate',914063404,'ennisdungate@gmail.com'),(15,'Tiffani Halstead',635570221,'tiffanihalstead@gmail.com'),(16,'Roddie Winterbotham',94943774,'roddiewinterbotham@gmail.com'),(17,'Pincas Stearn',31926414,'pincasstearn@gmail.com'),(18,'Tony Crabtree',516423502,'tonycrabtree@gmail.com'),(19,'Tamarah Filasov',494679584,'tamarahfilasov@gmail.com'),(20,'Pen Pruce',850163106,'penpruce@gmail.com');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,6 +94,7 @@ CREATE TABLE `menuitems` (
 
 LOCK TABLES `menuitems` WRITE;
 /*!40000 ALTER TABLE `menuitems` DISABLE KEYS */;
+INSERT INTO `menuitems` VALUES (1,'Olives','Greek salad','Athens White wine','Greek yoghurt'),(2,'Flatbread','Bean soup','Corfu Red Wine','Ice cream'),(3,'Minestrone','Pizza','Italian Coffee','Cheesecake'),(4,'Tomato bread','Carbonara','Roma Red wine','Affogato'),(5,'Falafel','Kabasa','Ankara White Wine','Turkish yoghurt'),(6,'Hummus','Shwarma','Turkish Coffee','Baklava');
 /*!40000 ALTER TABLE `menuitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,6 +122,7 @@ CREATE TABLE `menus` (
 
 LOCK TABLES `menus` WRITE;
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
+INSERT INTO `menus` VALUES (1,'Greek','Menu1',1),(2,'Italian','Menu2',2),(3,'Italian','Menu3',3),(4,'Turkish','Menu4',4),(5,'Greek','Menu5',5),(6,'Italian','Menu6',6);
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,8 +181,23 @@ CREATE TABLE `orderstable` (
 
 LOCK TABLES `orderstable` WRITE;
 /*!40000 ALTER TABLE `orderstable` DISABLE KEYS */;
+INSERT INTO `orderstable` VALUES (1,'2023-04-12',2,125.00,1,1),(2,'2023-04-12',1,235.00,2,2),(3,'2023-04-12',3,75.00,3,3),(4,'2023-04-12',3,220.00,4,4),(6,'2023-04-13',1,210.00,6,6),(7,'2023-04-13',2,310.00,1,7),(8,'2023-04-13',3,225.00,2,8),(9,'2023-04-13',2,190.00,3,9),(10,'2023-04-13',1,98.00,4,10),(11,'2023-04-13',3,168.27,5,11),(12,'2023-04-14',3,101.60,6,12),(13,'2023-04-14',2,93.13,1,13),(14,'2023-04-14',1,44.57,2,14),(15,'2023-04-14',2,91.84,3,15),(16,'2023-04-14',3,133.17,4,16),(17,'2023-04-14',2,52.08,5,17),(18,'2023-04-15',1,83.99,6,18),(19,'2023-04-15',5,69.38,1,19),(20,'2023-04-15',3,119.80,2,20);
 /*!40000 ALTER TABLE `orderstable` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `ordersview`
+--
+
+DROP TABLE IF EXISTS `ordersview`;
+/*!50001 DROP VIEW IF EXISTS `ordersview`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `ordersview` AS SELECT 
+ 1 AS `OrderID`,
+ 1 AS `Quantity`,
+ 1 AS `TotalCost`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `staffinfo`
@@ -205,6 +223,24 @@ LOCK TABLES `staffinfo` WRITE;
 /*!40000 ALTER TABLE `staffinfo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `staffinfo` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `ordersview`
+--
+
+/*!50001 DROP VIEW IF EXISTS `ordersview`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`wdbrace`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `ordersview` AS select `orderstable`.`OrderID` AS `OrderID`,`orderstable`.`Quantity` AS `Quantity`,`orderstable`.`Totalcost` AS `TotalCost` from `orderstable` where (`orderstable`.`Quantity` > 2) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -215,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-12 12:28:38
+-- Dump completed on 2023-12-13 12:11:33

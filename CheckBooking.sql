@@ -5,4 +5,4 @@ case
     ELSE concat("Table ", tableNumCheck, " is available")
 END As BookingStatus;
 
-call CheckBooking("2022-10-10",4);
+call CheckBooking("2022-10-10",5);
